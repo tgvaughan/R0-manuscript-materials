@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beast namespace="beast.core
+                  :beast.core.parameter
+                  :beast.evolution.tree
+                  :feast.expressions
+                  :feast.fileio.logfileiterator" version="2.0">
+
+  <run spec="LogFileIterator">
+    <logFileState spec="TraceLogFileState" logFileName="Results/BD_$(indep).clock_$(clock).bu_$(bu).$(idx).log">
+      <logFileEntry spec="LogFileRealParameter" fieldName="Re_diamond_princess"
+                    fieldParameterIndex="1">
+        <fieldParameter id="Re" spec="RealParameter" dimension="2" value="0.0"/>
+      </logFileEntry>
+      <logFileEntry spec="LogFileRealParameter" fieldName="Re_diamond_princess_postQ"
+                    fieldParameterIndex="0">
+        <fieldParameter idref="Re"/>
+      </logFileEntry>
+      <logFileEntry spec="LogFileRealParameter" fieldName="sampProp_diamond_princess">
+        <fieldParameter id="sampProp" spec="RealParameter" value="0.0"/>
+      </logFileEntry>
+      <logFileEntry spec="LogFileRealParameter" fieldName="sampProp_diamond_princess2"
+                    fieldParameterIndex="0">
+        <fieldParameter idref="sampProp"/>
+      </logFileEntry>
+    </logFileState>
+
+    <logFileState spec="TreeLogFileState" logFileName="Results/BD_$(indep).diamond_princess.clock_$(clock).bu_$(bu).$(idx).trees">
+      <tree spec="beast.evolution.tree.Tree" id="tree"/>
+    </logFileState>
+
+    <logger spec="Logger"
+            logEvery="10000000">
+      <log idref="Re"/>
+      <log idref="sampProp"/>
+      <log id="treestat" spec="TreeStatLogger" tree="@tree"/>
+      <log idref="infectionRate"/>
+      <log idref="recoveryRate"/>
+    </logger>
+
+    <logger spec="Logger"
+            fileName="Results/BD_$(indep).diamond_princess.clock_$(clock).bu_$(bu).$(idx).traj"
+            logEvery="100000">
+      <log spec="epiinf.TrajectoryLogger"
+           logMostRecentTrajectory="true">
+        <treeDensity id="treePrior" spec="epiinf.distribs.SMCTreeDensity"
+                     tree="@tree"
+                     nParticles="1000"
+                     useTauLeaping="true">
+          
+          <model spec="epiinf.models.BirthDeathModel"
+                 infectionRateShiftTimesBackward="true"
+                 origin="0.0985626283367557"
+                 psiSamplingVariable="@sampProp"
+                 psiSamplingVariableShiftTimesBackward="true"
+                 rhoSamplingTimesBackward="true"
+                 usePsiSamplingProportion="true">
+
+            <infectionRate id="infectionRate"
+                           spec="ExpCalculator"
+                           value="$(bu)*Re">
+              <arg idref="Re"/>
+            </infectionRate>
+
+            <recoveryRate id="recoveryRate"
+                          spec="ExpCalculator"
+                           value="$(bu)*(1-sampProp)">
+              <arg idref="sampProp"/>
+            </recoveryRate>
+
+            <infectionRateShiftTimes spec="parameter.RealParameter" value="0.0574948665297741"/>
+            
+            <removalProb spec="parameter.RealParameter" value="1.0" estimate="false"/>
+            <rhoSamplingProb spec="parameter.RealParameter" value="0.0" estimate="false"/>
+            <rhoSamplingTime spec="parameter.RealParameter" value="0.0" estimate="false"/>
+          </model>
+          
+          <finalTreeSampleOffset spec="parameter.RealParameter" value="0.0" estimate="false"/>
+        </treeDensity>
+      </log>
+    </logger>
+  </run>
+</beast>

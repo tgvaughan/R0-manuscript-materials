@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beast namespace="beast.core
+                  :beast.core.parameter
+                  :beast.evolution.tree
+                  :feast.expressions
+                  :feast.function
+                  :feast.fileio.logfileiterator" version="2.0">
+
+  <run spec="LogFileIterator">
+    <logFileState spec="TraceLogFileState" logFileName="Results/BD_$(indep).clock_$(clock).bu_$(bu).$(idx).log">
+      <logFileEntry spec="LogFileRealParameter" fieldName="Re_$(outbreak)">
+        <fieldParameter id="Re" spec="RealParameter" value="0.0"/>
+      </logFileEntry>
+      <logFileEntry spec="LogFileRealParameter" fieldName="sampProp_$(outbreak)2"
+                    fieldParameterIndex="0">
+        <fieldParameter id="sampProp" spec="RealParameter" value="0.0 0.0"/>
+      </logFileEntry>
+      <logFileEntry spec="LogFileRealParameter" fieldName="origin_$(outbreak)">
+        <fieldParameter id="origin" spec="RealParameter" value="0.0"/>
+      </logFileEntry>
+    </logFileState>
+
+    <logFileState spec="TreeLogFileState" logFileName="Results/BD_$(indep).$(outbreak).clock_$(clock).bu_$(bu).$(idx).trees">
+      <tree spec="beast.evolution.tree.Tree" id="tree"/>
+    </logFileState>
+
+    <logger spec="Logger"
+            logEvery="10000000">
+      <log idref="Re"/>
+      <log idref="sampProp"/>
+      <log id="treestat" spec="TreeStatLogger" tree="@tree"/>
+    </logger>
+
+    <logger spec="Logger"
+            fileName="Results/BD_$(indep).$(outbreak).clock_$(clock).bu_$(bu).$(idx).traj"
+            logEvery="100000">
+      <log spec="epiinf.TrajectoryLogger"
+           logMostRecentTrajectory="true">
+        <treeDensity id="treePrior" spec="epiinf.distribs.SMCTreeDensity"
+                     tree="@tree"
+                     nParticles="1000"
+                     useTauLeaping="true">
+          
+          <model spec="epiinf.models.BirthDeathModel"
+                 infectionRateShiftTimesBackward="true"
+                 origin="@origin"
+                 psiSamplingVariable="@sampProp"
+                 psiSamplingVariableShiftTimesBackward="true"
+                 rhoSamplingTimesBackward="true"
+                 usePsiSamplingProportion="true">
+
+            <infectionRate spec="ExpCalculator"
+                           value="$(bu)*Re">
+              <arg idref="Re"/>
+            </infectionRate>
+
+            <recoveryRate spec="ExpCalculator"
+                           value="$(bu)*(1-sampProp)">
+              <arg idref="sampProp"/>
+            </recoveryRate>
+
+            <psiSamplingVariableShiftTimes spec="ExpCalculator"
+                                           value="max(ages) + 0.5/365">
+              <arg id="ages" spec="SampleAges" tree="@tree"/>
+            </psiSamplingVariableShiftTimes>
+            
+            <removalProb spec="parameter.RealParameter" value="1.0" estimate="false"/>
+            <rhoSamplingProb spec="parameter.RealParameter" value="0.0" estimate="false"/>
+            <rhoSamplingTime spec="parameter.RealParameter" value="0.0" estimate="false"/>
+          </model>
+          
+          <finalTreeSampleOffset spec="parameter.RealParameter" value="0.0" estimate="false"/>
+        </treeDensity>
+      </log>
+    </logger>
+  </run>
+</beast>

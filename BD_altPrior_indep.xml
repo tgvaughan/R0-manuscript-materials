@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" version="2.0">
+
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<plate var="outbreak" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+<alignment spec="feast.fileio.AlignmentFromFasta" id="$(outbreak)"
+           fileName="sequences/$(outbreak).masked"/>
+</plate>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_australia"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="0">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_china"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="1">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_dutch1"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="2">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_dutch2"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="3">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_french1"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="4">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_french2"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="5">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_iceland1"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="6">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_iceland2"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="7">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_iran"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="8">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_italy"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="9">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_spain"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="10">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_washington1"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="11">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_washington2"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="12">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_welsh"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="13">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<reproductiveNumber spec="feast.modelselect.ModelSelectionParameter" id="Re_diamond_princess"
+                    selectionIndices="@selectionIndices"
+                    thisIndex="14">
+  <parameter idref="Re1"/>
+  <parameter idref="Re2"/>
+  <parameter idref="Re3"/>
+  <parameter idref="Re4"/>
+  <parameter idref="Re5"/>
+  <parameter idref="Re6"/>
+  <parameter idref="Re7"/>
+  <parameter idref="Re8"/>
+  <parameter idref="Re9"/>
+  <parameter idref="Re10"/>
+  <parameter idref="Re11"/>
+  <parameter idref="Re12"/>
+  <parameter idref="Re13"/>
+  <parameter idref="Re14"/>
+  <parameter idref="Re15"/>
+</reproductiveNumber>
+
+<run id="mcmc" spec="MCMC" chainLength="100000000">
+    <state id="state" storeEvery="1000">
+
+      <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+        <tree id="Tree.t:$(m)" name="stateNode">
+          <trait id="traitSet_$(m)"
+                 spec="feast.fileio.TraitSetFromTaxonSet"
+                 delimiter="|"
+                 everythingAfterLast="true"
+                 traitname="date"
+                 dateFormat="yyyy-M-dd">
+            <taxa id="taxonSet_$(m)" spec="TaxonSet" alignment="@$(m)"/>
+          </trait>
+          <taxonset idref="taxonSet_$(m)"/>
+        </tree>
+      </plate>
+
+      <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh">
+        <parameter id="sampProp_$(m)" lower="0.0" name="stateNode" upper="1.0">0 0.1</parameter>
+        <parameter id="origin_$(m)" lower="0.0" name="stateNode" upper="Infinity">5</parameter>
+      </plate>
+
+      <parameter id="sampProp_diamond_princess" name="stateNode" lower="0.0" upper="1.0" value="0.1"/>
+
+      <plate var="m" range="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15">
+        <parameter id="Re$(m)" lower="0.0" name="stateNode" dimension="1">2.0</parameter>
+      </plate>
+
+      <stateNode id="selectionIndices" spec="parameter.IntegerParameter"
+                 dimension="15" lower="0" upper="14" value="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14"/>
+
+      <stateNode id="dirichletScale" spec="parameter.RealParameter" lower="0" value="1.0"/>
+
+      <parameter id="kappa" lower="0.0" name="stateNode">2.0</parameter>
+      <parameter id="gammaShape" spec="parameter.RealParameter" name="stateNode">1.0</parameter>
+
+      <parameter id="Re_diamond_princess_postQ" name="stateNode" lower="0.0">2.0</parameter>
+    </state>
+
+    <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+    <init spec="beast.evolution.tree.RandomTree" estimate="false"
+          initial="@Tree.t:$(m)" taxa="@$(m)">
+        <populationModel spec="ConstantPopulation">
+            <parameter name="popSize">0.01</parameter>
+        </populationModel>
+    </init>
+    </plate>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+
+          <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh">
+            <distribution id="treePrior_$(m)"
+                          spec="beast.evolution.speciation.BirthDeathSkylineModel"
+                          reverseTimeArrays="true true true true true"
+                          origin="@origin_$(m)"
+                          samplingProportion="@sampProp_$(m)"
+                          reproductiveNumber="@Re_$(m)"
+                          tree="@Tree.t:$(m)">
+              <parameter name="becomeUninfectiousRate" value="$(burate)"/>
+              <samplingRateChangeTimes spec="feast.parameter.RealParameterFromFunction">
+                <function spec="feast.expressions.ExpCalculator" value="{0, max(ages_$(m))+0.5/365}">
+                  <arg id="ages_$(m)" spec="feast.function.TraitSetAsFunction" traitSet="@traitSet_$(m)"/>
+                </function>
+              </samplingRateChangeTimes>
+            </distribution>
+
+            <prior id="sampPropPrior_$(m)" name="distribution">
+              <x spec="feast.function.Slice" arg="@sampProp_$(m)"
+                 index="1" count="1"/>
+              <Beta name="distr" alpha="1" beta="4"/>
+            </prior>
+
+            <prior name="distribution" x="@origin_$(m)">
+              <LogNormal name="distr">
+                <parameter estimate="false" name="M">-2</parameter>
+                <parameter estimate="false" lower="0.0" name="S" upper="5.0">0.8</parameter>
+              </LogNormal>
+            </prior>
+
+          </plate>
+
+          <!-- Diamond Princess tree prior -->
+            <distribution id="treePrior_diamond_princess"
+                          spec="beast.evolution.speciation.BirthDeathSkylineModel"
+                          reverseTimeArrays="true true true true true"
+                          origin="0.0985626283367557"
+                          samplingProportion="@sampProp_diamond_princess"
+                          tree="@Tree.t:diamond_princess">
+
+              <parameter name="becomeUninfectiousRate" value="$(burate)"/>
+
+              <reproductiveNumber spec="feast.function.Concatenate">
+                <arg idref="Re_diamond_princess"/>
+                <arg idref="Re_diamond_princess_postQ"/>
+              </reproductiveNumber>
+
+              <parameter name="birthRateChangeTimes" value="0 0.0574948665297741"/>
+              
+            </distribution>
+
+            <prior id="sampPropPrior_diamond_princess" name="distribution" x="@sampProp_diamond_princess">
+              <Uniform name="distr" lower="0.0258690379951496" upper="0.137931034482759"/>
+            </prior>
+
+            <prior name="distribution" x="@Re_diamond_princess_postQ">
+                    <!-- <LogNormal name="distr" M="0.8" S="0.5" offset="0.0"/> -->
+                    <Uniform name="distr" lower="0" upper="10"/>
+            </prior>
+
+            <!-- Model selection priors -->
+
+          <plate var="m" range="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15">
+            <prior name="distribution" x="@Re$(m)">
+                    <!-- <LogNormal name="distr" M="0.8" S="0.5" offset="0.0"/> -->
+                    <Uniform name="distr" lower="0" upper="10"/>
+            </prior>
+          </plate>
+
+          <distribution id="selectionIndexPrior" spec="feast.modelselect.DirichletIndexPrior"
+                        selectionIndices="@selectionIndices"
+                        scalingParameter="@dirichletScale"/>
+
+          <prior id="dirichletScalePrior" name="distribution" x="@dirichletScale">
+            <Gamma name="distr">
+              <parameter estimate="false" name="alpha">0.512</parameter>
+              <parameter estimate="false" name="beta">0.029</parameter>
+            </Gamma>
+          </prior>
+
+          <!-- Substitution model parameter priors -->
+
+          <prior id="KappaPrior" name="distribution" x="@kappa">
+            <LogNormal name="distr">
+              <parameter estimate="false" name="M">1.0</parameter>
+              <parameter estimate="false" name="S">1.25</parameter>
+            </LogNormal>
+          </prior>
+
+          <prior id="GammaShapePrior" name="distribution" x="@gammaShape">
+            <Exponential name="distr">
+              <parameter estimate="false" name="mean">0.5</parameter>
+            </Exponential>
+          </prior>
+
+        </distribution>
+
+        <distribution id="likelihood" spec="util.CompoundDistribution">
+
+          <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+
+          <distribution id="treeLikelihood.$(m)" spec="ThreadedTreeLikelihood" data="@$(m)" tree="@Tree.t:$(m)">
+              <siteModel id="SiteModel.s:$(m)" spec="SiteModel" gammaCategoryCount="4" shape="@gammaShape">
+                  <parameter id="mutationRate.s:$(m)" estimate="false" name="mutationRate">1.0</parameter>
+                  <parameter id="proportionInvariant.s:$(m)" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                  <substModel spec="HKY" kappa="@kappa">
+                      <frequencies spec="Frequencies" data="@$(m)"/>
+                  </substModel>
+              </siteModel>
+              <branchRateModel id="StrictClock.c:$(m)" spec="beast.evolution.branchratemodel.StrictClockModel">
+                <parameter id="clockRate.c:$(m)" lower="0.0" name="clock.rate" upper="Infinity" value="$(clockrate)"/>
+              </branchRateModel>
+          </distribution>
+
+          </plate>
+
+        </distribution>
+    </distribution>
+
+    <operator id="KappaScaler" spec="ScaleOperator" parameter="@kappa" scaleFactor="0.5" weight="0.1"/>
+
+    <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+      <operator id="BDSKY_serialtreeScaler.t:$(m)" spec="ScaleOperator" scaleFactor="0.801" tree="@Tree.t:$(m)" weight="3.0"/>
+      <operator id="BDSKY_serialtreeRootScaler.t:$(m)" spec="ScaleOperator" rootOnly="true" scaleFactor="0.728" tree="@Tree.t:$(m)" weight="3.0"/>
+      <operator id="BDSKY_serialUniformOperator.t:$(m)" spec="Uniform" tree="@Tree.t:$(m)" weight="30.0"/>
+      <operator id="BDSKY_serialSubtreeSlide.t:$(m)" spec="SubtreeSlide" size="0.835" tree="@Tree.t:$(m)" weight="15.0"/>
+      <operator id="BDSKY_serialnarrow.t:$(m)" spec="Exchange" tree="@Tree.t:$(m)" weight="15.0"/>
+      <operator id="BDSKY_serialwide.t:$(m)" spec="Exchange" isNarrow="false" tree="@Tree.t:$(m)" weight="3.0"/>
+      <operator id="BDSKY_serialWilsonBalding.t:$(m)" spec="WilsonBalding" tree="@Tree.t:$(m)" weight="3.0"/>
+
+      <operator id="samplingScaler_$(m)" spec="ScaleOperator" parameter="@sampProp_$(m)" scaleFactor="0.75" weight="2.0"/>
+    </plate>
+
+    <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh">
+      <operator id="origScaler_$(m)" spec="ScaleOperator" parameter="@origin_$(m)" scaleFactor="0.75" weight="1.0"/>
+    </plate>
+
+    <plate var="m" range="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15">
+      <operator id="reproductiveNumberScaler$(m)" spec="ScaleOperator"
+                parameter="@Re$(m)" scaleFactor="0.75" weight="10.0"/>
+    </plate>
+
+    <operator id="reproductiveNumberScalerDPPost" spec="ScaleOperator"
+                parameter="@Re_diamond_princess_postQ" scaleFactor="0.75" weight="10.0"/>
+
+    <!-- <operator id="selectionIndexOperator" spec="IntRandomWalkOperator" windowSize="16" parameter="@selectionIndices" weight="10.0"/> -->
+
+    <!-- <operator id="dirichletScale_operator" spec="ScaleOperator" parameter="@dirichletScale" scaleFactor="0.8" weight="1.0"/> -->
+
+    <operator id="gammaShape_operator" spec="ScaleOperator" parameter="@gammaShape" scaleFactor="0.5" weight="0.1"/>
+
+    <logger id="screenlog" logEvery="100000">
+      <log idref="posterior"/>
+    </logger>
+
+    <logger id="tracelog" fileName="Results/$(filebase).clock_$(clockrate).bu_$(burate).$(seed).log" logEvery="10000" model="@posterior" sanitiseHeaders="true" sort="smart">
+      <log idref="posterior"/>
+      <log idref="likelihood"/>
+      <log idref="prior"/>
+
+      <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+        <log idref="treePrior_$(m)"/>
+        <log idref="treeLikelihood.$(m)"/>
+        <log spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:$(m)"/>
+        <log spec="multitypetree.util.TreeLengthLogger" tree="@Tree.t:$(m)"/>
+
+        <log idref="sampProp_$(m)"/>
+        <log idref="Re_$(m)"/>
+      </plate>
+
+      <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh">
+        <log idref="origin_$(m)"/>
+      </plate>
+
+      <log idref="Re_diamond_princess_postQ"/>
+
+      <log idref="kappa"/>
+      <log idref="gammaShape"/>
+      <log idref="selectionIndices"/>
+      <log idref="dirichletScale"/>
+      <log id="uniqueReCount" spec="feast.modelselect.UniqueParameterCount" selectionIndices="@selectionIndices"/>
+    </logger>
+
+    <plate var="m" range="australia,china,dutch1,dutch2,french1,french2,iceland1,iceland2,iran,italy,spain,washington1,washington2,welsh,diamond_princess">
+      <logger id="treelog.t:$(m)" fileName="Results/$(filebase).$(m).clock_$(clockrate).bu_$(burate).$(seed).trees" logEvery="10000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:$(m)" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:$(m)"/>
+      </logger>
+    </plate>
+
+</run>
+
+</beast>
