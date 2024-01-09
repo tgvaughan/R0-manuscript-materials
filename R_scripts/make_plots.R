@@ -14,6 +14,8 @@
 library(tidyverse)
 library(lubridate)
 
+dir.create("../figures")
+
 outbreaks <- c("Australia",
                "China",
                "The Netherlands (1)",
@@ -373,7 +375,7 @@ p <- ggplot(results_linked_unprocessed) +
                    fill="orange") +
     theme_bw() +
     xlab(expression(paste("Unique ",R[e], " values"))) + ylab("Probability")
-ggsave("figures/unique_Re_count.png", p, width=15, height=15, units="cm")
+ggsave("../figures/unique_Re_count.png", p, width=15, height=15, units="cm")
 
 
 ## Sample date distribution plot ##
@@ -396,7 +398,7 @@ p <- ggplot(outbreak_dates) +
     guides(colour=FALSE) +
     xlab("Days following first sampled sequence") +
     ylab("Outbreak")
-ggsave("figures/sample_ranges.png", p, width=25, height=15, units="cm")
+ggsave("../figures/sample_ranges.png", p, width=25, height=15, units="cm")
 
 
 ## Sample count table ##
@@ -418,7 +420,7 @@ p <- ggplot(results_indep) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill="none") +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_indep.pdf"), p,
+ggsave(paste0("../figures/Re_comparison_indep.pdf"), p,
        width=15, height=10, units="cm")
 
 ## Linked
@@ -430,7 +432,7 @@ p <- ggplot(results_linked) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_linked.png"), p,
+ggsave(paste0("../figures/Re_comparison_linked.png"), p,
        width=15, height=10, units="cm")
 
 ## Alternate R0 prior
@@ -442,7 +444,7 @@ p <- ggplot(results_altPrior_indep) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_altPrior_indep.png"), p,
+ggsave(paste0("../figures/Re_comparison_altPrior_indep.png"), p,
        width=15, height=10, units="cm")
 
 ## Rateshift model selection estimates
@@ -454,7 +456,7 @@ p <- ggplot(results_rateshift_indep) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_rateshift_modelsel.png"), p,
+ggsave(paste0("../figures/Re_comparison_rateshift_modelsel.png"), p,
        width=15, height=10, units="cm")
 
 ## Rateshift (conditioned on rate shift)
@@ -466,7 +468,7 @@ p <- ggplot(results_rateshift_indep %>% filter(Re_post != Re)) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_rateshift_cond_for.png"), p,
+ggsave(paste0("../figures/Re_comparison_rateshift_cond_for.png"), p,
        width=15, height=10, units="cm")
 
 ## Rateshift (conditioned on no shift)
@@ -478,7 +480,7 @@ p <- ggplot(results_rateshift_indep %>% filter(Re_post == Re)) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_rateshift_cond_against.png"), p,
+ggsave(paste0("../figures/Re_comparison_rateshift_cond_against.png"), p,
        width=15, height=10, units="cm")
 
 
@@ -491,7 +493,7 @@ p <- ggplot(results_rateshift_indep %>% filter(Re_post != Re)) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_rateshift_post.png"), p,
+ggsave(paste0("../figures/Re_comparison_rateshift_post.png"), p,
        width=15, height=10, units="cm")
 
 # Rateshift times (absolute)
@@ -502,7 +504,7 @@ p <- ggplot(results_rateshift_indep %>% filter(Re_post != Re, Outbreak != "Prior
     ## ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_rateshift_times_abs.png"), p,
+ggsave(paste0("../figures/Re_comparison_rateshift_times_abs.png"), p,
        width=15, height=10, units="cm")
 
 # Rateshift times (relative)
@@ -513,7 +515,7 @@ p <- ggplot(results_rateshift_indep %>% filter(Re_post != Re)) +
     ## ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_rateshift_times_rel.png"), p,
+ggsave(paste0("../figures/Re_comparison_rateshift_times_rel.png"), p,
        width=15, height=10, units="cm")
 
 # Scatter plots
@@ -524,7 +526,7 @@ p <- ggplot(results_rateshift_indep) +
     ylab(expression(R[2])) +
     theme_bw() + guides(fill=FALSE) + guides(color=FALSE)
     ## theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_pre_post.png"), p,
+ggsave(paste0("../figures/Re_pre_post.png"), p,
        width=20, height=20, units="cm")
 
 # Sample rate shift model selection estimates
@@ -537,7 +539,7 @@ p <- ggplot(results_samprateshift_indep) +
     ylab(expression(R[0])) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/Re_comparison_samprateshift_modelsel.png"), p,
+ggsave(paste0("../figures/Re_comparison_samprateshift_modelsel.png"), p,
        width=15, height=10, units="cm")
 
 # Sample and R0 rate shift (fixed change time)
@@ -551,7 +553,7 @@ p <- ggplot(results_fixedrateshift_indep) +
     theme_bw() + guides(fill=FALSE) +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0)) #+
     ## ggtitle("Fixed time rate shift (s and R0)")
-ggsave(paste0("figures/Re_comparison_fixedrateshift.png"), p,
+ggsave(paste0("../figures/Re_comparison_fixedrateshift.png"), p,
        width=15, height=10, units="cm")
 
 
@@ -565,7 +567,7 @@ p <- ggplot(results_indep %>% filter(Outbreak != "Prior")) +
     ylab("Sampling proportion") +
     guides(fill=FALSE) + theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/samplingProp_comparison_indep.png"), p,
+ggsave(paste0("../figures/samplingProp_comparison_indep.png"), p,
        width=15, height=10, units="cm")
 
 
@@ -577,7 +579,7 @@ p <- ggplot(results_linked %>% filter(Outbreak != "Prior")) +
     ylab("Sampling proportion") +
     guides(fill=FALSE) + theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave(paste0("figures/samplingProp_comparison_linked.png"), p,
+ggsave(paste0("../figures/samplingProp_comparison_linked.png"), p,
        width=15, height=10, units="cm")
 
 
@@ -594,7 +596,7 @@ dfRe <- bind_rows(df %>% select(Re_diamond_princess) %>%
 p <- ggplot(dfRe) +
     geom_violin(aes(factor(Phase, levels=c("Pre-quarantine", "Post-quarantine")), Re)) +
     ylab("Reproductive number") + xlab(element_blank())
-ggsave(paste0("figures/Re_comparison_DP_pre_post_indep.png"), p,
+ggsave(paste0("../figures/Re_comparison_DP_pre_post_indep.png"), p,
        width=10, height=10, units="cm")
 
 
@@ -645,14 +647,14 @@ p <- ggplot() +
     facet_wrap(facets=vars(Outbreak), ncol=5) +
     theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave("figures/Re_comparison_indep_noseq_regression.png", p,
+ggsave("../figures/Re_comparison_indep_noseq_regression.png", p,
        width=20, height=20, units="cm")
 
 
 
 ## Case count marginal posteriors (from EpiInf)
 
-source("~/code/beast_and_friends/EpiInf/scripts/trajDataTools.R")
+source("trajDataTools.R")
 
 casecountdf <- NULL
 for (population in unique(outbreak_population)) {
@@ -709,7 +711,7 @@ p <- ggplot(casecountdf) +
     guides(fill=FALSE) +
     theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave("figures/caseCounts_comparison_indep.png", p,
+ggsave("../figures/caseCounts_comparison_indep.png", p,
        width=15, height=10, units="cm")
 
 scientific_10 <- function(x) {
@@ -730,7 +732,7 @@ p <- ggplot(casecountdf) +
     guides(fill="none") +
     theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave("figures/caseCounts_comparison_indep_offset.pdf", p,
+ggsave("../figures/caseCounts_comparison_indep_offset.pdf", p,
        width=15, height=10, units="cm")
 
 
@@ -839,7 +841,7 @@ p <- ggplot(casecountdf) +
     guides(fill="none") +
     theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave("figures/caseCountsIFR_comparison_indep_offset.png", p,
+ggsave("../figures/caseCountsIFR_comparison_indep_offset.png", p,
        width=15, height=10, units="cm")
 
 # Cryptic genetic diversity plot
@@ -859,7 +861,7 @@ p <- ggplot(sampleddiversitydf %>% filter(population!="Wales")) +
     guides(fill="none") +
     theme_bw() +
     theme(axis.text.x = element_text(angle=-90, vjust=0.5, hjust=0))
-ggsave("figures/sampled_diversity_indep_offset.png", p,
+ggsave("../figures/sampled_diversity_indep_offset.png", p,
        width=15, height=10, units="cm")
 
 
@@ -917,13 +919,13 @@ p <- ggplot(confirmed_cases_ecdf, aes(Date, normCount, col=Population)) +
     theme_bw() +
     theme(axis.text.x = element_text(angle=-45, vjust=0.5, hjust=0)) +
     xlab(NULL) + ylab("Cumulative proportion")
- ggsave("figures/cumulative_sample_count_comparison.png", p,
+ ggsave("../figures/cumulative_sample_count_comparison.png", p,
        width=15, height=15, units="cm")
    
 
 ### Trajectory plots
 
-source("~/code/beast_and_friends/EpiInf/scripts/trajDataTools.R")
+source("trajDataTools.R")
 
 makeTrajPlot <- function(filenames, final_sample_date, casecount_data=NA, offset=0) {
     if (length(filenames)>1) {
@@ -980,7 +982,7 @@ makeTrajPlot <- function(filenames, final_sample_date, casecount_data=NA, offset
     return(p)
 }
 
-ggsave("figures/trajectories_australia.png",
+ggsave("../figures/trajectories_australia.png",
        makeTrajPlot("../Results/BD_indep.australia.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-03-11"),
                     confirmed_cases %>% filter(population=="Australia",
@@ -990,7 +992,7 @@ ggsave("figures/trajectories_australia.png",
        scale_y_log10(limits=c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_china.png",
+ggsave("../figures/trajectories_china.png",
        makeTrajPlot("../Results/BD_indep.china.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-01-23"),
                     confirmed_cases %>% filter(population=="China",
@@ -1000,7 +1002,7 @@ ggsave("figures/trajectories_china.png",
        scale_y_log10(limits = c(1,1e5)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_netherlands.png",
+ggsave("../figures/trajectories_netherlands.png",
        makeTrajPlot(c("../Results/BD_indep.dutch1.clock_8e-4.bu_36.5.1.traj",
                       "../Results/BD_indep.dutch2.clock_8e-4.bu_36.5.1.traj"),
                     ymd("2020-03-12"),
@@ -1011,7 +1013,7 @@ ggsave("figures/trajectories_netherlands.png",
        scale_y_log10(limits = c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_france.png",
+ggsave("../figures/trajectories_france.png",
        makeTrajPlot(c("../Results/BD_indep.french1.clock_8e-4.bu_36.5.1.traj",
                       "../Results/BD_indep.french2.clock_8e-4.bu_36.5.1.traj"),
                     ymd("2020-03-16"),
@@ -1022,7 +1024,7 @@ ggsave("figures/trajectories_france.png",
        scale_y_log10(limits = c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_iceland.png",
+ggsave("../figures/trajectories_iceland.png",
        makeTrajPlot(c("../Results/BD_indep.iceland1.clock_8e-4.bu_36.5.1.traj",
                       "../Results/BD_indep.iceland2.clock_8e-4.bu_36.5.1.traj"),
                     ymd("2020-03-18"),
@@ -1033,7 +1035,7 @@ ggsave("figures/trajectories_iceland.png",
        scale_y_log10(limits = c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_iran.png",
+ggsave("../figures/trajectories_iran.png",
        makeTrajPlot("../Results/BD_indep.iran.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-03-04"),
                     confirmed_cases %>% filter(population=="Iran",
@@ -1043,7 +1045,7 @@ ggsave("figures/trajectories_iran.png",
        scale_y_log10(limits = c(1,1e5)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_italy.png",
+ggsave("../figures/trajectories_italy.png",
        makeTrajPlot("../Results/BD_indep.italy.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-03-08"),
                     confirmed_cases %>% filter(population=="Italy",
@@ -1053,7 +1055,7 @@ ggsave("figures/trajectories_italy.png",
        scale_y_log10(limits = c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_spain.png",
+ggsave("../figures/trajectories_spain.png",
        makeTrajPlot("../Results/BD_indep.spain.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-03-12"),
                     confirmed_cases %>% filter(population=="Spain",
@@ -1063,7 +1065,7 @@ ggsave("figures/trajectories_spain.png",
        scale_y_log10(limits = c(1,2e3)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_washington.png",
+ggsave("../figures/trajectories_washington.png",
        makeTrajPlot(c("../Results/BD_indep.washington1.clock_8e-4.bu_36.5.1.traj",
                       "../Results/BD_indep.washington2.clock_8e-4.bu_36.5.1.traj"),
                     ymd("2020-03-11"),
@@ -1074,7 +1076,7 @@ ggsave("figures/trajectories_washington.png",
        scale_y_log10(limits = c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_wales.png",
+ggsave("../figures/trajectories_wales.png",
        makeTrajPlot("../Results/BD_indep.welsh.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-03-16"),
                     confirmed_cases %>% filter(population=="Wales",
@@ -1084,7 +1086,7 @@ ggsave("figures/trajectories_wales.png",
        scale_y_log10(limits = c(1,1e4)),
        width=15, height=10, units="cm")
 
-ggsave("figures/trajectories_diamond_princess.png",
+ggsave("../figures/trajectories_diamond_princess.png",
        makeTrajPlot("../Results/BD_indep.diamond_princess.clock_8e-4.bu_36.5.1.traj",
                     ymd("2020-02-25"),
                     confirmed_cases %>% filter(population=="Diamond Princess",
@@ -1121,7 +1123,7 @@ for (outbreak in outbreaks) {
 }
 
 for (outbreak in outbreaks) {
-    ggsave(paste0("figures/topology_distr_",outbreak_beast_codes[outbreak],".png"),
+    ggsave(paste0("../figures/topology_distr_",outbreak_beast_codes[outbreak],".png"),
            ess_plots[[outbreak]] + ggtitle(outbreak) + xlab("Topological Distance"),
            width=8, height=8, units="cm")
 }
@@ -1211,7 +1213,7 @@ p <- as_tibble(identities, rownames="outbreak1") %>%
     theme(axis.title=element_blank(),
           axis.text.x=element_text(angle=-90, hjust=0, vjust=0.5)) +
     guides(fill="none", color="none")
-ggsave("figures/sequence_identity.png", p, width=23, height=18, units="cm")
+ggsave("../figures/sequence_identity.png", p, width=23, height=18, units="cm")
 
 
 ### Shuffled sequence analysis result plots
@@ -1248,6 +1250,6 @@ p <- ggplot(combined_data %>% filter(Population != "Prior")) +
           axis.ticks.x = element_blank(),
           axis.title.x = element_blank(),
           legend.position = "bottom")
-ggsave(paste0("figures/Re_comparison_indep_shuffled.pdf"), p,
+ggsave(paste0("../figures/Re_comparison_indep_shuffled.pdf"), p,
        width=20, height=20, units="cm")
 
