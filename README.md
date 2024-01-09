@@ -1,7 +1,7 @@
 # R0 manuscript materials
 
 This repository contains the BEAST 2 XML files and R scripts needed to
-replicate the analyses presented in the manuscript "Estimates of
+replicate the analyses presented in the manuscript "Estimates of early
 outbreak-specific SARS-CoV-2 epidemiological parameters from genomic
 data".
 
